@@ -4,17 +4,19 @@
     </div>
 </template>
 <script>
-import axios from 'axios';
 
 export default {
     name: "WordComponent",
     data() {
-
+        return {
+            
+        }
     },
     methods: {
-        getWord(){
-            axios.get()
-        }
+        
+    },
+    mounted() {
+        this.$store.dispatch("addWord");
     },
 }
 </script>
