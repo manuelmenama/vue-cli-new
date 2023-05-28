@@ -8,6 +8,7 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
+    baseUrl: "https://flynn.boolean.careers/exercises/api/random/word",
     singleWord: "",
     arrayOfWord: [
 
@@ -16,20 +17,22 @@ export default new Vuex.Store({
   },
   getters: {},
   mutations: {
+    SET_WORD(state, word) {
+      state.singleWord = post;
+    }
   },
   actions: {
     addWord(){
       
-
-      axios.get("https://flynn.boolean.careers/exercises/api/random/word")
+      axios.get(this.state.baseUrl)
         .then((result) => {
-            
-            console.log(result.data);
+            console.log(result.data.response);
+            let word = result.data.response;
+            commit("SET_WORD", word)
         }).catch((err) => {
             console.log(err);
         });
 
-      
     },
   },
   modules: {},
